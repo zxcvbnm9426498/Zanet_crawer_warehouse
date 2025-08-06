@@ -4,4 +4,5 @@ asyncio>=3.4.3
 beautifulsoup4>=4.11.0
 pandas>=1.4.0
 tqdm>=4.64.0
-playwright>=1.30.0 
+playwright>=1.30.0
+python-dotenv>=1.0.0
