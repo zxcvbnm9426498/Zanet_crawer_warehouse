@@ -7,7 +7,6 @@ from datetime import datetime
 from typing import Dict, Any, List
 from dotenv import load_dotenv
 from playwright.sync_api import Playwright, sync_playwright
-
 load_dotenv()
 def setup_logging():
     class ColoredFormatter(logging.Formatter):
@@ -234,6 +233,9 @@ def save_products_to_csv(keyword: str):
                     value = item.get(header, "")
                     if header in ["商品ID", "卖家ID", "分类ID", "淘宝分类ID", "子分类ID"] and value:
                         value = f"'{value}"
+                    elif header == "目标URL" and value:
+                        if value.startswith("fleamarket:/"):
+                            value = value.replace("fleamarket:/", "https://www.goofish.com", 1)
                     row.append(value)
                 writer.writerow(row)
         logger.info(f"商品数据已保存到: {filename}")
@@ -280,26 +282,6 @@ def fetch_item_details(page, item_ids: List[str]):
                 break
             continue
     logger.info(f"商品详情获取完成，成功获取 {success_count} 个商品的详情")
-def load_cookies_from_file():
-    try:
-        if os.path.exists('cookies.json'):
-            with open('cookies.json', 'r', encoding='utf-8') as f:
-                cookies_data = json.load(f)
-                if isinstance(cookies_data, dict) and 'cookies' in cookies_data:
-                    cookies = cookies_data['cookies']
-                elif isinstance(cookies_data, list):
-                    cookies = cookies_data
-                else:
-                    logger.error("❌ cookies.json格式不正确")
-                    return []
-                logger.info(f"✅ 成功加载 {len(cookies)} 个cookies")
-                return cookies
-        else:
-            logger.warning("⚠️ cookies.json文件不存在")
-            return []
-    except Exception as e:
-        logger.error(f"❌ 加载cookies.json失败: {e}")
-        return []
 def run(playwright: Playwright) -> None:
     global all_products_data, item_details_cache
     all_products_data = []  
@@ -313,11 +295,7 @@ def run(playwright: Playwright) -> None:
     logger.info(f"搜索关键词: {keyword}")
     logger.info(f"浏览器模式: {'显示界面' if show_browser else '无界面模式'}")
     browser = playwright.chromium.launch(headless=headless_mode)
-    cookies = load_cookies_from_file()
     context = browser.new_context()
-    if cookies:
-        context.add_cookies(cookies)
-        logger.info("✅ Cookies已添加到浏览器context")
     page = context.new_page()
     try:
         log_step(1, "访问闲鱼网站")
@@ -404,7 +382,7 @@ def run(playwright: Playwright) -> None:
                                 item_id = url_match.group(1)
                         if item_id:
                             logger.debug(f"捕获到商品详情API响应，商品ID: {item_id}")
-                            process_detail_api_response(response_data, item_id)
+                            item_count = process_detail_api_response(response_data, item_id)
                         else:
                             logger.warning("无法从详情API响应中提取商品ID")
                 except Exception as e:
@@ -418,16 +396,44 @@ def run(playwright: Playwright) -> None:
                 area_button.hover()
                 page.wait_for_timeout(1000)
                 try:
-                    page.get_by_text(area_province).click()
-                    page.wait_for_timeout(500)
-                    logger.info(f"选择省份: {area_province}")
+                    province_selector = f'div[class*="provItem"] >> text="{area_province}"'
+                    province_element = page.locator(province_selector).first
+                    if province_element.is_visible(timeout=3000):
+                        province_element.click()
+                        page.wait_for_timeout(500)
+                        logger.info(f"选择省份: {area_province}")
+                    else:
+                        tooltip_province = page.get_by_role("tooltip").get_by_text(area_province)
+                        if tooltip_province.is_visible(timeout=2000):
+                            tooltip_province.click()
+                            page.wait_for_timeout(500)
+                            logger.info(f"选择省份: {area_province} (使用tooltip选择器)")
+                        else:
+                            raise Exception(f"无法找到省份选项: {area_province}")
                 except Exception as e:
                     logger.warning(f"选择省份 {area_province} 失败: {e}")
                     raise
                 try:
-                    page.get_by_text(area_city).click()
-                    page.wait_for_timeout(1000)
-                    logger.info(f"选择城市: {area_city}")
+                    city_selector = f'div[class*="cityItem"] >> text="{area_city}"'
+                    city_element = page.locator(city_selector).first
+                    if city_element.is_visible(timeout=3000):
+                        city_element.click()
+                        page.wait_for_timeout(1000)
+                        logger.info(f"选择城市: {area_city}")
+                    else:
+                        tooltip_city = page.get_by_role("tooltip").get_by_text(area_city)
+                        if tooltip_city.is_visible(timeout=2000):
+                            tooltip_city.click()
+                            page.wait_for_timeout(1000)
+                            logger.info(f"选择城市: {area_city} (使用tooltip选择器)")
+                        else:
+                            city_fallback = page.locator('div[class*="area"]').get_by_text(area_city).first
+                            if city_fallback.is_visible(timeout=2000):
+                                city_fallback.click()
+                                page.wait_for_timeout(1000)
+                                logger.info(f"选择城市: {area_city} (使用备用选择器)")
+                            else:
+                                raise Exception(f"无法找到城市选项: {area_city}")
                 except Exception as e:
                     logger.warning(f"选择城市 {area_city} 失败: {e}")
                     raise
@@ -560,7 +566,6 @@ def run(playwright: Playwright) -> None:
         except:
             pass
         logger.info("资源清理完成")
-        
 if __name__ == "__main__":
     with sync_playwright() as playwright:
         run(playwright)
