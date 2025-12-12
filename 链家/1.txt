@@ -1,0 +1,8 @@
+
+#北:https://bj.lianjia.com/zufang/rs/
+上:https://sh.lianjia.com/zufang/rs/
+广:https://gz.lianjia.com/zufang/rs/
+#深:https://sz.lianjia.com/zufang/rs/
+#杭:https://hz.lianjia.com/zufang/rs/
+获取每个城市的全部租房数据
+北上广深 4 个一线城市要求每个城市至少抓取 8000 条有效数据

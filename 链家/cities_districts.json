@@ -1,0 +1,497 @@
+{
+  "cities": {
+    "hangzhou": {
+      "name": "杭州",
+      "domain": "hz.lianjia.com",
+      "districts": [
+        {
+          "id": "0",
+          "name": "不限",
+          "type": "district",
+          "url": "https://hz.lianjia.com/zufang/",
+          "selected": true
+        },
+        {
+          "id": "330183",
+          "name": "富阳区",
+          "type": "district",
+          "url": "https://hz.lianjia.com/zufang/fuyangqu/",
+          "selected": true
+        },
+        {
+          "id": "330182",
+          "name": "建德市",
+          "type": "district",
+          "url": "https://hz.lianjia.com/zufang/jiandeshi/",
+          "selected": true
+        },
+        {
+          "id": "330185",
+          "name": "临安区",
+          "type": "district",
+          "url": "https://hz.lianjia.com/zufang/linanqu/",
+          "selected": true
+        },
+        {
+          "id": "23009015",
+          "name": "海宁市",
+          "type": "district",
+          "url": "https://hz.lianjia.com/zufang/hainingshi/",
+          "selected": true
+        },
+        {
+          "id": "23011905",
+          "name": "临平区",
+          "type": "district",
+          "url": "https://hz.lianjia.com/zufang/linpingqu/",
+          "selected": true
+        },
+        {
+          "id": "23011864",
+          "name": "钱塘区",
+          "type": "district",
+          "url": "https://hz.lianjia.com/zufang/qiantangqu/",
+          "selected": true
+        },
+        {
+          "id": "330127",
+          "name": "淳安县",
+          "type": "district",
+          "url": "https://hz.lianjia.com/zufang/chunanxian/",
+          "selected": true
+        },
+        {
+          "id": "330122",
+          "name": "桐庐县",
+          "type": "district",
+          "url": "https://hz.lianjia.com/zufang/tongluxian/",
+          "selected": true
+        },
+        {
+          "id": "330105",
+          "name": "拱墅区",
+          "type": "district",
+          "url": "https://hz.lianjia.com/zufang/gongshuqu/",
+          "selected": true
+        },
+        {
+          "id": "330106",
+          "name": "西湖区",
+          "type": "district",
+          "url": "https://hz.lianjia.com/zufang/xihuqu4/",
+          "selected": true
+        },
+        {
+          "id": "330108",
+          "name": "滨江区",
+          "type": "district",
+          "url": "https://hz.lianjia.com/zufang/binjiangqu/",
+          "selected": true
+        },
+        {
+          "id": "330110",
+          "name": "余杭区",
+          "type": "district",
+          "url": "https://hz.lianjia.com/zufang/yuhangqu/",
+          "selected": true
+        },
+        {
+          "id": "330109",
+          "name": "萧山区",
+          "type": "district",
+          "url": "https://hz.lianjia.com/zufang/xiaoshanqu/",
+          "selected": true
+        },
+        {
+          "id": "330102",
+          "name": "上城区",
+          "type": "district",
+          "url": "https://hz.lianjia.com/zufang/shangchengqu/",
+          "selected": true
+        }
+      ]
+    },
+    "shenzhen": {
+      "name": "深圳",
+      "domain": "sz.lianjia.com",
+      "districts": [
+        {
+          "id": "0",
+          "name": "不限",
+          "type": "district",
+          "url": "https://sz.lianjia.com/zufang/",
+          "selected": true
+        },
+
+        {
+          "id": "23008675",
+          "name": "光明区",
+          "type": "district",
+          "url": "https://sz.lianjia.com/zufang/guangmingqu/",
+          "selected": true
+        },
+        {
+          "id": "23008680",
+          "name": "坪山区",
+          "type": "district",
+          "url": "https://sz.lianjia.com/zufang/pingshanqu/",
+          "selected": true
+        },
+        {
+          "id": "23008673",
+          "name": "大鹏新区",
+          "type": "district",
+          "url": "https://sz.lianjia.com/zufang/dapengxinqu/",
+          "selected": true
+        }
+      ]
+    },
+    "guangzhou": {
+      "name": "广州",
+      "domain": "gz.lianjia.com",
+      "districts": [
+        {
+          "id": "0",
+          "name": "不限",
+          "type": "district",
+          "url": "https://gz.lianjia.com/zufang/",
+          "selected": true
+        },
+        {
+          "id": "23008636",
+          "name": "天河",
+          "type": "district",
+          "url": "https://gz.lianjia.com/zufang/tianhe/",
+          "selected": true
+        },
+        {
+          "id": "23008634",
+          "name": "越秀",
+          "type": "district",
+          "url": "https://gz.lianjia.com/zufang/yuexiu/",
+          "selected": true
+        },
+        {
+          "id": "23008633",
+          "name": "荔湾",
+          "type": "district",
+          "url": "https://gz.lianjia.com/zufang/liwan/",
+          "selected": true
+        },
+        {
+          "id": "23008635",
+          "name": "海珠",
+          "type": "district",
+          "url": "https://gz.lianjia.com/zufang/haizhu/",
+          "selected": true
+        },
+        {
+          "id": "23008639",
+          "name": "番禺",
+          "type": "district",
+          "url": "https://gz.lianjia.com/zufang/panyu/",
+          "selected": true
+        },
+        {
+          "id": "23008637",
+          "name": "白云",
+          "type": "district",
+          "url": "https://gz.lianjia.com/zufang/baiyun/",
+          "selected": true
+        },
+        {
+          "id": "23008638",
+          "name": "黄埔",
+          "type": "district",
+          "url": "https://gz.lianjia.com/zufang/huangpugz/",
+          "selected": true
+        },
+        {
+          "id": "23008644",
+          "name": "从化",
+          "type": "district",
+          "url": "https://gz.lianjia.com/zufang/conghua/",
+          "selected": true
+        },
+        {
+          "id": "23008643",
+          "name": "增城",
+          "type": "district",
+          "url": "https://gz.lianjia.com/zufang/zengcheng/",
+          "selected": true
+        },
+        {
+          "id": "23008640",
+          "name": "花都",
+          "type": "district",
+          "url": "https://gz.lianjia.com/zufang/huadou/",
+          "selected": true
+        },
+        {
+          "id": "23008641",
+          "name": "南沙",
+          "type": "district",
+          "url": "https://gz.lianjia.com/zufang/nansha/",
+          "selected": true
+        }
+      ]
+    },
+    "shanghai": {
+      "name": "上海",
+      "domain": "sh.lianjia.com",
+      "districts": [
+        {
+          "id": "0",
+          "name": "不限",
+          "type": "district",
+          "url": "https://sh.lianjia.com/zufang/",
+          "selected": true
+        },
+        {
+          "id": "310106",
+          "name": "静安",
+          "type": "district",
+          "url": "https://sh.lianjia.com/zufang/jingan/",
+          "selected": true
+        },
+        {
+          "id": "310104",
+          "name": "徐汇",
+          "type": "district",
+          "url": "https://sh.lianjia.com/zufang/xuhui/",
+          "selected": true
+        },
+        {
+          "id": "310101",
+          "name": "黄浦",
+          "type": "district",
+          "url": "https://sh.lianjia.com/zufang/huangpu/",
+          "selected": true
+        },
+        {
+          "id": "310105",
+          "name": "长宁",
+          "type": "district",
+          "url": "https://sh.lianjia.com/zufang/changning/",
+          "selected": true
+        },
+        {
+          "id": "310107",
+          "name": "普陀",
+          "type": "district",
+          "url": "https://sh.lianjia.com/zufang/putuo/",
+          "selected": true
+        },
+        {
+          "id": "310115",
+          "name": "浦东",
+          "type": "district",
+          "url": "https://sh.lianjia.com/zufang/pudong/",
+          "selected": true
+        },
+        {
+          "id": "310113",
+          "name": "宝山",
+          "type": "district",
+          "url": "https://sh.lianjia.com/zufang/baoshan/",
+          "selected": true
+        },
+        {
+          "id": "310109",
+          "name": "虹口",
+          "type": "district",
+          "url": "https://sh.lianjia.com/zufang/hongkou/",
+          "selected": true
+        },
+        {
+          "id": "310110",
+          "name": "杨浦",
+          "type": "district",
+          "url": "https://sh.lianjia.com/zufang/yangpu/",
+          "selected": true
+        },
+        {
+          "id": "310112",
+          "name": "闵行",
+          "type": "district",
+          "url": "https://sh.lianjia.com/zufang/minhang/",
+          "selected": true
+        },
+        {
+          "id": "310116",
+          "name": "金山",
+          "type": "district",
+          "url": "https://sh.lianjia.com/zufang/jinshan/",
+          "selected": true
+        },
+        {
+          "id": "310114",
+          "name": "嘉定",
+          "type": "district",
+          "url": "https://sh.lianjia.com/zufang/jiading/",
+          "selected": true
+        },
+        {
+          "id": "310230",
+          "name": "崇明",
+          "type": "district",
+          "url": "https://sh.lianjia.com/zufang/chongming/",
+          "selected": true
+        },
+        {
+          "id": "310120",
+          "name": "奉贤",
+          "type": "district",
+          "url": "https://sh.lianjia.com/zufang/fengxian/",
+          "selected": true
+        },
+        {
+          "id": "310117",
+          "name": "松江",
+          "type": "district",
+          "url": "https://sh.lianjia.com/zufang/songjiang/",
+          "selected": true
+        },
+        {
+          "id": "310118",
+          "name": "青浦",
+          "type": "district",
+          "url": "https://sh.lianjia.com/zufang/qingpu/",
+          "selected": true
+        }
+      ]
+    },
+    "beijing": {
+      "name": "北京",
+      "domain": "bj.lianjia.com",
+      "districts": [
+        {
+          "id": "0",
+          "name": "不限",
+          "type": "district",
+          "url": "https://bj.lianjia.com/zufang/",
+          "selected": true
+        },
+        {
+          "id": "23008614",
+          "name": "东城",
+          "type": "district",
+          "url": "https://bj.lianjia.com/zufang/dongcheng/",
+          "selected": true
+        },
+        {
+          "id": "23008626",
+          "name": "西城",
+          "type": "district",
+          "url": "https://bj.lianjia.com/zufang/xicheng/",
+          "selected": true
+        },
+        {
+          "id": "23008613",
+          "name": "朝阳",
+          "type": "district",
+          "url": "https://bj.lianjia.com/zufang/chaoyang/",
+          "selected": true
+        },
+        {
+          "id": "23008618",
+          "name": "海淀",
+          "type": "district",
+          "url": "https://bj.lianjia.com/zufang/haidian/",
+          "selected": true
+        },
+        {
+          "id": "23008617",
+          "name": "丰台",
+          "type": "district",
+          "url": "https://bj.lianjia.com/zufang/fengtai/",
+          "selected": true
+        },
+        {
+          "id": "23008623",
+          "name": "石景山",
+          "type": "district",
+          "url": "https://bj.lianjia.com/zufang/shijingshan/",
+          "selected": true
+        },
+        {
+          "id": "23008625",
+          "name": "通州",
+          "type": "district",
+          "url": "https://bj.lianjia.com/zufang/tongzhou/",
+          "selected": true
+        },
+        {
+          "id": "23008611",
+          "name": "昌平",
+          "type": "district",
+          "url": "https://bj.lianjia.com/zufang/changping/",
+          "selected": true
+        },
+        {
+          "id": "23008615",
+          "name": "大兴",
+          "type": "district",
+          "url": "https://bj.lianjia.com/zufang/daxing/",
+          "selected": true
+        },
+        {
+          "id": "23008629",
+          "name": "北京经济技术开发区",
+          "type": "district",
+          "url": "https://bj.lianjia.com/zufang/beijingjingjijishukaifaqu/",
+          "selected": true
+        },
+        {
+          "id": "23008624",
+          "name": "顺义",
+          "type": "district",
+          "url": "https://bj.lianjia.com/zufang/shunyi/",
+          "selected": true
+        },
+        {
+          "id": "23008616",
+          "name": "房山",
+          "type": "district",
+          "url": "https://bj.lianjia.com/zufang/fangshan/",
+          "selected": true
+        },
+        {
+          "id": "23008620",
+          "name": "门头沟",
+          "type": "district",
+          "url": "https://bj.lianjia.com/zufang/mentougou/",
+          "selected": true
+        },
+        {
+          "id": "23008622",
+          "name": "平谷",
+          "type": "district",
+          "url": "https://bj.lianjia.com/zufang/pinggu/",
+          "selected": true
+        },
+        {
+          "id": "23008619",
+          "name": "怀柔",
+          "type": "district",
+          "url": "https://bj.lianjia.com/zufang/huairou/",
+          "selected": true
+        },
+        {
+          "id": "23008621",
+          "name": "密云",
+          "type": "district",
+          "url": "https://bj.lianjia.com/zufang/miyun/",
+          "selected": true
+        },
+        {
+          "id": "23008628",
+          "name": "延庆",
+          "type": "district",
+          "url": "https://bj.lianjia.com/zufang/yanqing/",
+          "selected": true
+        }
+      ]
+    }
+  }
+}

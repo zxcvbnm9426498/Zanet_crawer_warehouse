@@ -1,0 +1,227 @@
+{
+  "cookies": [
+    {
+      "name": "lianjia_ssid",
+      "value": "9f788b0e-f2d8-4999-81a1-6c8cb8a8b80f",
+      "domain": ".lianjia.com",
+      "path": "/",
+      "expires": 1765291006.163887,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "lianjia_uuid",
+      "value": "b5724efd-3929-41f3-9e85-75534347ed6e",
+      "domain": ".lianjia.com",
+      "path": "/",
+      "expires": 1799849078.938981,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "crosSdkDT2019DeviceId",
+      "value": "5pxq7i-38beax-lcan76995t4mibj-v6mi13sfm",
+      "domain": ".lianjia.com",
+      "path": "/",
+      "expires": 1799849079.310726,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "captcha_v4_user",
+      "value": "99e1b853989d4f5388da4d54643b2acd",
+      "domain": "gcaptcha4.geetest.com",
+      "path": "/",
+      "expires": 1796825079.784756,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "hip",
+      "value": "sOr_-RNfH4Ge_wYqCFDaLWvnk7lQXQNVBNoHXH95UJJPmecHhm8uxNL0CL6BZrQOnzRrmtcwJTCYWN7ozlp1qtxY2czFX5WPXdq-KKo2YE_7HvccN6goHlpMKZ3K6vruGqrL0FpO6ZXYtcZi5em4mUYTz7mEMJtZsqiE-A64bHM4SJUhngnj5yOVIEENIPkaXJK0-XcanDCgMC1ZHjl8HdoKl7Uv-n-ismTq-SWpqDYHs7itnhf0Z9D0cXE%3D",
+      "domain": ".lianjia.com",
+      "path": "/",
+      "expires": 1765296298.123517,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "select_city",
+      "value": "330100",
+      "domain": ".lianjia.com",
+      "path": "/",
+      "expires": 1765375498.712129,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "GUARANTEE_POPUP_SHOW",
+      "value": "true",
+      "domain": "hz.lianjia.com",
+      "path": "/",
+      "expires": 1765375499,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "ab_jid",
+      "value": "ffc85f0a0bf9a12bafb08ac130257b532231",
+      "domain": ".miao.baidu.com",
+      "path": "/",
+      "expires": 1799849149.668558,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "ab_jid_BFESS",
+      "value": "ffc85f0a0bf9a12bafb08ac130257b532231",
+      "domain": ".miao.baidu.com",
+      "path": "/",
+      "expires": 1799849149.668623,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "TGC",
+      "value": "TGT-1588944-ckRZmzff7a15qNtvDuu83BQr7aNuifOTDaelC5e39vfaHdpvyYCyE3fwtsfDV7u4t-c-ke.com",
+      "domain": "clogin.lianjia.com",
+      "path": "/",
+      "expires": 1765893948.517579,
+      "httpOnly": true,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "TGC_Secure",
+      "value": "TGT-1588944-ckRZmzff7a15qNtvDuu83BQr7aNuifOTDaelC5e39vfaHdpvyYCyE3fwtsfDV7u4t-c-ke.com",
+      "domain": "clogin.lianjia.com",
+      "path": "/",
+      "expires": 1765893948.517631,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "login_ucid",
+      "value": "2000000513429611",
+      "domain": ".lianjia.com",
+      "path": "/",
+      "expires": 1765893948.517654,
+      "httpOnly": true,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "lianjia_token",
+      "value": "2.0013235e64481263e3028e7755556d007a",
+      "domain": ".lianjia.com",
+      "path": "/",
+      "expires": 1765893948.517702,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "lianjia_token_secure",
+      "value": "2.0013235e64481263e3028e7755556d007a",
+      "domain": ".lianjia.com",
+      "path": "/",
+      "expires": 1765893948.517727,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "security_ticket",
+      "value": "D42pxoY0swK+JmLBvjIUfp/t8lDxuVdxulZIBZvaBZNUom80PBHnX3VP8DzmBfzkgpVvIACht1sEdd0r4Ri22EK34A9my/Ln0fDmcQ9Ht/QV2O+1c97UgYOIbqkCrVhnZe2J0hoAe+qVH0m+UgbuxIEfryZvNUczrFR2FCLm5RM=",
+      "domain": ".lianjia.com",
+      "path": "/",
+      "expires": 1765893948.517745,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "ftkrc_",
+      "value": "41228c41-cef5-42fb-964f-9a60d8886089",
+      "domain": ".lianjia.com",
+      "path": "/",
+      "expires": 1773065148.517761,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "lfrc_",
+      "value": "f91524c7-9c31-4c7b-87ba-d9ae7f004f99",
+      "domain": ".lianjia.com",
+      "path": "/",
+      "expires": 1796825148.517776,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "ab_bid",
+      "value": "c85f0a0bf9a12bafb08ac130257b53223230",
+      "domain": ".miao.baidu.com",
+      "path": "/",
+      "expires": 1799849149.668584,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "srcid",
+      "value": "eyJ0Ijoie1wiZGF0YVwiOlwiNDhiOWNjMzE4M2VhZWZmNjY2YjIyYmRhZGM4YTEzN2I2MjAyOTYzZjJmNThhNjNiODFhZjYwMGU0ZTA5YTI5ODYwMjE5Yjc2Yzk2YmMxMmY2ZjMwMjgzMDMxZjUwNGRmYTM1ZjEyNTU1YTM4OTNhYTcxOWY0YjQ0ZmQ2ZWQ5Yjc3ODQ3MTM1NjkxNDMwNTI0MzI1NzBiN2M5Mjc0MmNiODhmNmYzMzZhMTM4MTU4MTU2NzU1YjEyZjVhNWNlNTI5ZWRlNjExYjI2MmYyNTNmOWQ1NmI5MGNiZThiZGU3ZjA2YjdmMmQ1Yzg0NWNkZTQwMTBkMjJjODQwYWQzZTBlNFwiLFwia2V5X2lkXCI6XCIxXCIsXCJzaWduXCI6XCIyNzhjZjBhZlwifSIsInIiOiJodHRwczovL2h6LmxpYW5qaWEuY29tL3p1ZmFuZy8iLCJvcyI6IndlYiIsInYiOiIwLjEifQ==",
+      "domain": "hz.lianjia.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "ab_sr",
+      "value": "1.0.1_ZDMzYjk4MWE5MGEwZTEyNGM1NjM3MTZiNTMwMzU1NDIwYzAyZjlmZmI5OWQwMmRhY2FiNmViNjViYzFlNTk3M2M5MTZmMWExYmM1ZWZmMjE3ZWNjNzkzMDY3MGUyNzVjMTVhZDdmNzlmZjk3NGY5ZTFkN2JkMzllYzI2MmIxOGYzNjViOWYwY2I3YTIwZDM4ZGRjYmUwMDY2N2MyMjRjZQ==",
+      "domain": ".baidu.com",
+      "path": "/",
+      "expires": 1765296349.668603,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    }
+  ],
+  "origins": [
+    {
+      "origin": "https://hz.lianjia.com",
+      "localStorage": [
+        {
+          "name": "iceman_enable_pc-rent",
+          "value": "true"
+        },
+        {
+          "name": "mongoMachineId",
+          "value": "16114416"
+        },
+        {
+          "name": "risk_config_hz.lianjia.com",
+          "value": "{\"config\":{\"risk-strategy-gather-network\":[\"app_version\",\"client_source\",\"device_type\",\"init_uuid\",\"request_time\",\"sdk_version\",\"ucid\",\"width\"],\"risk-strategy-gather-ui\":[\"app_version\",\"client_source\",\"device_type\",\"init_uuid\",\"request_time\",\"sdk_version\",\"ucid\",\"width\"],\"risk-decrypt-gather\":[\"current_page\",\"init_uuid\"],\"uc\":[\"app_version\",\"brand_name\",\"client_ip\",\"client_source\",\"client_ua\",\"device_type\",\"is_debug\",\"net\",\"os_type\",\"os_version\",\"ram_total\",\"sdk_version\",\"app_code_name\",\"app_name\",\"product\",\"product_sub\",\"platform\",\"cookies\",\"is_incognito\",\"plugins\",\"cookies_enabled\",\"do_not_track\",\"inner_width\",\"outer_width\",\"inner_height\",\"outer_height\",\"indexed_db\",\"open_db\",\"local_storage\",\"session_storage\",\"mime_types\",\"pdf_viewer_enabled\",\"vendor\",\"vendor_flavors\",\"is_webdriver\",\"language\",\"browser_language\",\"user_language\",\"system_language\",\"time_zone\",\"fonts\",\"math\",\"avail_height\",\"avail_width\",\"avail_left\",\"avail_top\",\"height\",\"width\",\"screen_frame\",\"color_depth\",\"pixel_depth\",\"max_touch_points\",\"monochrome\",\"is_hdr\",\"hardware_concurrency\",\"cpu_class\",\"gpu_vendor\",\"gpu_renderer\",\"canvas_fingerprint\",\"canvas_pixel\",\"webgl_fingerprint\",\"audio_context_fingerprint\",\"ucid\",\"device_model\",\"dlp_wss_result\"]},\"pollingGatherSceneList\":[],\"strategyConfig\":{}}"
+        },
+        {
+          "name": "BangInfo",
+          "value": "{}"
+        }
+      ]
+    }
+  ]
+}
