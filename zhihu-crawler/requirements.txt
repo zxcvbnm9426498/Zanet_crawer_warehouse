@@ -1,0 +1,5 @@
+scrapy>=2.11.0
+parsel>=1.9.0
+execjs>=1.5.1
+itemadapter>=0.7.0
+
