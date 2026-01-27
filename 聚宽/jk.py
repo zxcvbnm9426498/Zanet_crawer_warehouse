@@ -187,7 +187,7 @@ def receive_credits(session, valide_code, app_key, app_secret):
 
 def send_notification(message, msg_type='text'):
     """发送企业微信通知"""
-    webhook_url = os.getenv("WEBHOOK_URL")
+    webhook_url = 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=dd087cea-1c56-4902-b919-e1f0aacd4a1f'
     if not webhook_url or not WEWORK_AVAILABLE:
         return
     
