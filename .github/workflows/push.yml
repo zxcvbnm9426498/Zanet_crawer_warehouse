@@ -22,11 +22,12 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install requests pillow AntiCAP
+        pip install requests pillow AntiCAP weworkbot
 
     - name: Run Sign In Script
       env:
         JOINQUANT_USERNAME: ${{ secrets.JOINQUANT_USERNAME }}
         JOINQUANT_PASSWORD: ${{ secrets.JOINQUANT_PASSWORD }}
+        WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
       run: |
-        python 聚宽/jk_sign_in.py
+        python 推送仓/jk.py
