@@ -30,4 +30,4 @@ jobs:
         JOINQUANT_PASSWORD: ${{ secrets.JOINQUANT_PASSWORD }}
         WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
       run: |
-        python 推送仓/jk.py
+        python 聚宽/jk.py
