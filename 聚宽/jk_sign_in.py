@@ -4,7 +4,10 @@
 JOINQUANT_USERNAME=你的账号
 JOINQUANT_PASSWORD=你的密码
 
-配置环境:pip install requests pillow AntiCAP
+配置环境:pip install requests pillow AntiCAP weworkbot
+
+需要在.env文件中添加（可选）:
+WEBHOOK_URL=你的企业微信机器人webhook地址
 
 '''
 
@@ -17,6 +20,14 @@ import os
 import hashlib
 import math
 import AntiCAP
+from datetime import datetime
+
+try:
+    from weworkbot import Bot as wBot
+    WEWORK_AVAILABLE = True
+except ImportError:
+    WEWORK_AVAILABLE = False
+    print("Warning: weworkbot not installed, push notifications will be disabled")
 
 headers = {
     "Accept": "application/json, text/plain, */*",
@@ -172,6 +183,21 @@ def receive_credits(session, valide_code, app_key, app_secret):
     
     response = session.post(url, headers=form_headers, data=data)
     print("Sign in response:", response.text)
+    return response.json()
+
+def send_notification(message, msg_type='text'):
+    """发送企业微信通知"""
+    webhook_url = os.getenv("WEBHOOK_URL")
+    if not webhook_url or not WEWORK_AVAILABLE:
+        return
+    
+    try:
+        if msg_type == 'markdown':
+            wBot(webhook_url).set_text(message, type='markdown').send()
+        else:
+            wBot(webhook_url).set_text(message).send()
+    except Exception as e:
+        print(f"Failed to send notification: {e}")
 
 def solve_and_validate(session):
     print("Fetching captcha...")
@@ -203,7 +229,7 @@ def solve_and_validate(session):
     return valide_code
 
 def main():
-
+    current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     username = os.getenv("JOINQUANT_USERNAME")
     password = os.getenv("JOINQUANT_PASSWORD")
     
@@ -212,7 +238,9 @@ def main():
     print("--- Starting Login Process ---")
     valide_code = solve_and_validate(session)
     if not valide_code:
+        error_msg = f"聚宽签到失败\n时间: {current_time}\n原因: 验证码识别失败"
         print("Failed to solve captcha for login")
+        send_notification(error_msg)
         return
 
     print("Logging in...")
@@ -220,8 +248,10 @@ def main():
     print("Login response:", login_resp)
     
     if login_resp.get('status') == '1':
-         print("Login failed:", login_resp.get('msg'))
-         return
+        error_msg = f"聚宽签到失败\n时间: {current_time}\n原因: 登录失败 - {login_resp.get('msg', '未知错误')}"
+        print("Login failed:", login_resp.get('msg'))
+        send_notification(error_msg)
+        return
 
     if check_login(session):
         print("Login successful!")
@@ -232,7 +262,9 @@ def main():
             if login_task:
                 print(f"Login Task Status: {login_task.get('status')} (1=Done, 0=Not Done)")
                 if str(login_task.get('status')) == '1':
+                    success_msg = f"聚宽签到提醒\n时间: {current_time}\n状态: 今日已签到"
                     print("Already signed in today!")
+                    send_notification(success_msg)
                     return
             else:
                 print("Login task not found in task list")
@@ -250,18 +282,32 @@ def main():
             app_secret = generate_secret(app_key)
             print(f"Generated appSecret: {app_secret}")
         else:
+            error_msg = f"聚宽签到失败\n时间: {current_time}\n原因: 获取Token失败"
             print("Failed to get token")
+            send_notification(error_msg)
             return
         
         valide_code_credits = solve_and_validate(session)
         if valide_code_credits:
             print("Signing in (Receive Credits)...")
-            receive_credits(session, valide_code_credits, app_key, app_secret)
+            credits_resp = receive_credits(session, valide_code_credits, app_key, app_secret)
+            if credits_resp and credits_resp.get('code') == '00000':
+                success_msg = f"聚宽签到成功\n时间: {current_time}\n状态: 签到完成"
+                print("Sign in successful!")
+                send_notification(success_msg)
+            else:
+                error_msg = f"聚宽签到失败\n时间: {current_time}\n原因: 签到请求失败 - {credits_resp.get('msg', '未知错误') if credits_resp else '无响应'}"
+                print("Sign in failed:", credits_resp)
+                send_notification(error_msg)
         else:
+            error_msg = f"聚宽签到失败\n时间: {current_time}\n原因: 签到验证码识别失败"
             print("Failed to solve captcha for credits")
+            send_notification(error_msg)
 
     else:
+        error_msg = f"聚宽签到失败\n时间: {current_time}\n原因: 登录验证失败"
         print("Login check failed.")
+        send_notification(error_msg)
 
 if __name__ == '__main__':
     main()
