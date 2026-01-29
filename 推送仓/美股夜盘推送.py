@@ -22,12 +22,12 @@ def send_text(content: str):
     wBot(url).set_text(content).send()
 
 MODULES: Dict[str, List[str]] = {
-    "AI 应用（AI Applications）": ["PLTR", "AI", "PATH", "CRM", "ADBE"],
-    "存储芯片（Memory Chips）": ["MU", "WDC", "STX", "KIOXY", "SNDK"],
-    "机器人（Robotics）": ["TSLA", "IRBT", "ISRG", "SFTBY", "AVAV"],
-    "半导体（Semiconductors）": ["NVDA", "AMD", "INTC", "TSM", "ASML"],
-    "CPO（Co-packaged Optics）": ["AVGO", "MRVL", "COHR", "LITE", "NVDA"],
-    "光伏（Solar PV）": ["FSLR", "ENPH", "SEDG", "RUN", "SPWR"],
+    "AI 应用": ["PLTR", "AI", "PATH", "CRM", "ADBE"],
+    "存储芯片": ["MU", "WDC", "STX", "KIOXY", "SNDK"],
+    "机器人": ["TSLA", "IRBT", "ISRG", "SFTBY", "AVAV"],
+    "半导体": ["NVDA", "AMD", "INTC", "TSM", "ASML"],
+    "CPO": ["AVGO", "MRVL", "COHR", "LITE", "NVDA"],
+    "光伏": ["FSLR", "ENPH", "SEDG", "RUN", "SPWR"],
 }
 
 
@@ -128,12 +128,12 @@ def build_markdown_message(rows, module_stats, date: str):
         lines.append(f"**跌幅最大板块**：{max_down['module']}（{_fmt_pct3(max_down['module_pct'])}）")
         lines.append("")
 
-        lines.append("**板块汇总（板块涨跌幅=板块内 5 只个股涨跌幅平均）**")
+        lines.append("**板块汇总**")
         lines.append("")
         # 使用代码块实现等宽字体对齐
         table_lines = []
         table_lines.append("板块".ljust(35) + "个股数".rjust(8) + "涨跌幅".rjust(15))
-        table_lines.append("-" * 58)
+        table_lines.append("-" * 38)
         for ms in module_stats:
             module_name = ms['module']
             count = ms['count']
@@ -171,7 +171,6 @@ def build_markdown_message(rows, module_stats, date: str):
     if not rows:
         lines.append("今日未获取到任何美股收盘数据。")
 
-    lines.append(f"_生成时间（UTC）：{datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')}_")
     return "\n".join(lines)
 
 
