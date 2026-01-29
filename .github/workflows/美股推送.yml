@@ -24,6 +24,6 @@ jobs:
         pip install requests yfinance weworkbot
     - name: Run Sign In Script
       env:
-        WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
+        WX_WEBHOOK_URL: ${{ secrets.WX_WEBHOOK_URL }}
       run: |
         python 推送仓/美股夜盘推送.py
