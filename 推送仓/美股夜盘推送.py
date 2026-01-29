@@ -3,8 +3,8 @@ from datetime import datetime
 from typing import Dict, List, Optional, Tuple
 
 from weworkbot import Bot as wBot
-
-url = 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=dd087cea-1c56-4902-b919-e1f0aacd4a1f'
+import os
+url = os.getenv("WX_WEBHOOK_URL")
 
 def send_markdown(content: str):
     wBot(url).set_text(content, type='markdown').send()
