@@ -117,6 +117,7 @@ def _fmt_pct3(x: Optional[float]) -> str:
 def build_markdown_message(rows, module_stats, date: str):
     """
     把收盘价 + 个股涨跌幅 + 板块汇总拼成一条 Markdown 消息
+    使用等宽字体格式化的文本（企业微信不支持标准 Markdown 表格，使用代码块实现对齐）
     """
     lines: List[str] = [f"**美股夜盘收盘 & 板块涨跌汇总（{date}）**", ""]
 
@@ -129,10 +130,18 @@ def build_markdown_message(rows, module_stats, date: str):
 
         lines.append("**板块汇总（板块涨跌幅=板块内 5 只个股涨跌幅平均）**")
         lines.append("")
-        lines.append("| 板块 | 覆盖个股数 | 板块涨跌幅 |")
-        lines.append("| --- | ---: | ---: |")
+        # 使用代码块实现等宽字体对齐
+        table_lines = []
+        table_lines.append("板块".ljust(35) + "个股数".rjust(8) + "涨跌幅".rjust(15))
+        table_lines.append("-" * 58)
         for ms in module_stats:
-            lines.append(f"| {ms['module']} | {ms['count']} | {_fmt_pct3(ms['module_pct'])} |")
+            module_name = ms['module']
+            count = ms['count']
+            pct_str = _fmt_pct3(ms['module_pct'])
+            table_lines.append(module_name.ljust(35) + str(count).rjust(8) + pct_str.rjust(15))
+        lines.append("```")
+        lines.extend(table_lines)
+        lines.append("```")
         lines.append("")
 
     # 个股明细（按板块分组）
@@ -145,11 +154,18 @@ def build_markdown_message(rows, module_stats, date: str):
             continue
         lines.append(f"**{module}**")
         lines.append("")
-        lines.append("| 股票 | 收盘价 | 涨跌幅 |")
-        lines.append("| --- | ---: | ---: |")
+        # 使用代码块实现等宽字体对齐
+        table_lines = []
+        table_lines.append("股票".ljust(8) + "收盘价".rjust(15) + "涨跌幅".rjust(15))
+        table_lines.append("-" * 38)
         for s in available:
             r = by_symbol[s]
-            lines.append(f"| {s} | `{_fmt3(r['close'])}` | `{_fmt_pct3(r['pct'])}` |")
+            close_str = _fmt3(r['close'])
+            pct_str = _fmt_pct3(r['pct'])
+            table_lines.append(s.ljust(8) + close_str.rjust(15) + pct_str.rjust(15))
+        lines.append("```")
+        lines.extend(table_lines)
+        lines.append("```")
         lines.append("")
 
     if not rows:
