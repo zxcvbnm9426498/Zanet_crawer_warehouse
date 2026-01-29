@@ -190,9 +190,8 @@ def get_beijing_time():
     beijing_tz = timezone(timedelta(hours=8))
     return datetime.now(beijing_tz).strftime("%Y-%m-%d %H:%M:%S")
 
-def send_notification(message, msg_type='text'):
+def send_notification(webhook_url,message, msg_type='text'):
     """发送企业微信通知"""
-    webhook_url = 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=dd087cea-1c56-4902-b919-e1f0aacd4a1f'
     if not webhook_url or not WEWORK_AVAILABLE:
         return
     
@@ -237,7 +236,7 @@ def main():
     current_time = get_beijing_time()
     username = os.getenv("JOINQUANT_USERNAME")
     password = os.getenv("JOINQUANT_PASSWORD")
-    
+    webhook_url = os.getenv("WX_WEBHOOK_URL")
     session = requests.Session()
     
     print("--- Starting Login Process ---")
@@ -245,7 +244,7 @@ def main():
     if not valide_code:
         error_msg = f"聚宽签到失败\n时间: {current_time}\n原因: 验证码识别失败"
         print("Failed to solve captcha for login")
-        send_notification(error_msg)
+        send_notification(webhook_url,error_msg)
         return
 
     print("Logging in...")
