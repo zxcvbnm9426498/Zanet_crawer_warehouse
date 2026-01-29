@@ -1,24 +1,16 @@
 import yfinance as yf
 from datetime import datetime
 from typing import Dict, List, Optional, Tuple
-import csv
 
 from weworkbot import Bot as wBot
 
-# 企业微信机器人 Webhook URL
 url = 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=dd087cea-1c56-4902-b919-e1f0aacd4a1f'
 
 def send_markdown(content: str):
-    """
-    发送 Markdown 消息到企业微信群机器人
-    """
     wBot(url).set_text(content, type='markdown').send()
 
 
 def send_text(content: str):
-    """
-    发送普通文本消息到企业微信群机器人
-    """
     wBot(url).set_text(content).send()
 
 MODULES: Dict[str, List[str]] = {
@@ -39,10 +31,7 @@ def _safe_float(x) -> Optional[float]:
 
 
 def get_last_two_closes(symbol: str) -> Optional[Tuple[str, float, float]]:
-    """
-    返回 (date_yyyy_mm_dd, last_close, prev_close)
-    拿不到或数据不足则返回 None
-    """
+
     ticker = yf.Ticker(symbol)
     hist = ticker.history(period="10d", interval="1d")
     if hist is None or hist.empty or "Close" not in hist.columns:
@@ -62,13 +51,7 @@ def get_last_two_closes(symbol: str) -> Optional[Tuple[str, float, float]]:
 
 
 def get_daily_stats_for_symbols(symbols: List[str]):
-    """
-    每个 symbol 返回:
-    - date: 最近交易日日期
-    - close: 最近收盘价
-    - prev_close: 前一交易日收盘价
-    - pct: 涨跌幅（%）
-    """
+
     results = []
     for symbol in symbols:
         data = get_last_two_closes(symbol)
@@ -86,21 +69,6 @@ def get_daily_stats_for_symbols(symbols: List[str]):
         })
     return results
 
-
-def save_to_csv(rows, filename="us_stocks_close.csv"):
-    if not rows:
-        print("没有数据可以写入 CSV")
-        return
-
-    fieldnames = ["symbol", "date", "close", "prev_close", "pct"]
-    with open(filename, "a", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=fieldnames)
-        # 如果文件是第一次写，可以写表头（简单判断文件是否为空也可以，这里直接写一次，手动删也行）
-        # writer.writeheader()
-        for row in rows:
-            writer.writerow(row)
-
-
 def _fmt3(x: Optional[float]) -> str:
     if x is None:
         return "--"
@@ -115,10 +83,7 @@ def _fmt_pct3(x: Optional[float]) -> str:
 
 
 def build_markdown_message(rows, module_stats, date: str):
-    """
-    把收盘价 + 个股涨跌幅 + 板块汇总拼成一条 Markdown 消息
-    使用等宽字体格式化的文本（企业微信不支持标准 Markdown 表格，使用代码块实现对齐）
-    """
+
     lines: List[str] = [f"**美股夜盘收盘 & 板块涨跌汇总（{date}）**", ""]
 
     if module_stats:
@@ -130,7 +95,6 @@ def build_markdown_message(rows, module_stats, date: str):
 
         lines.append("**板块汇总**")
         lines.append("")
-        # 使用代码块实现等宽字体对齐
         table_lines = []
         table_lines.append("板块".ljust(35) + "个股数".rjust(8) + "涨跌幅".rjust(15))
         table_lines.append("-" * 38)
@@ -144,7 +108,6 @@ def build_markdown_message(rows, module_stats, date: str):
         lines.append("```")
         lines.append("")
 
-    # 个股明细（按板块分组）
     by_symbol = {r["symbol"]: r for r in rows}
     lines.append("**个股明细**")
     lines.append("")
@@ -154,7 +117,6 @@ def build_markdown_message(rows, module_stats, date: str):
             continue
         lines.append(f"**{module}**")
         lines.append("")
-        # 使用代码块实现等宽字体对齐
         table_lines = []
         table_lines.append("股票".ljust(8) + "收盘价".rjust(15) + "涨跌幅".rjust(15))
         table_lines.append("-" * 38)
@@ -195,16 +157,11 @@ def calc_module_stats(rows):
 
 
 if __name__ == "__main__":
-    # 股票池：所有板块个股去重后合并
+
     symbols = sorted({s for ss in MODULES.values() for s in ss})
 
     rows = get_daily_stats_for_symbols(symbols)
-    print(rows)
 
-    # 保存到 CSV
-    save_to_csv(rows)
-
-    # 推送到企业微信
     date = rows[0]["date"] if rows else datetime.utcnow().strftime("%Y-%m-%d")
     module_stats = calc_module_stats(rows)
     markdown_content = build_markdown_message(rows, module_stats, date)
