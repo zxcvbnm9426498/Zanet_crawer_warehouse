@@ -2,7 +2,7 @@ name: USA YEPAN
 
 on:
   schedule:
-    - cron: '4 30 * * *'
+    - cron: '30 4 * * *'
   workflow_dispatch: # 允许手动触发
 
 jobs:
