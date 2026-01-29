@@ -5,7 +5,7 @@ from typing import Dict, List, Optional, Tuple
 from weworkbot import Bot as wBot
 import os
 url = os.getenv("WX_WEBHOOK_URL")
-
+print(url)
 def send_markdown(content: str):
     wBot(url).set_text(content, type='markdown').send()
 
